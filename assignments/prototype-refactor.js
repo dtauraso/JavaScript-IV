@@ -12,9 +12,7 @@ class GameObject{
     constructor(gameAttributes){
         this.name = gameAttributes.name
         this.dimensions = gameAttributes.dimensions
-    }
-    createdAt() {
-
+        this.createdAt = gameAttributes.createdAt
     }
     destroy() {
         return `destroy ${this.name}`
@@ -43,6 +41,7 @@ var a = new GameObject({
   }})
 
   var b = new CharacterStats({
+      createdAt: new Date(),
       healthPoints: 2,
       name: "object b",
       dimensions: {
@@ -51,7 +50,8 @@ var a = new GameObject({
           height: 2,
     }
     })
-  console.log(b.destroy())
+
+console.log(b.destroy())
   console.log(b.takeDamage())
 
 
