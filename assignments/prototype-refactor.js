@@ -63,7 +63,6 @@ console.log(b.destroy())
         this.weapons = humanoidAttributes.weapons
         this.language = humanoidAttributes.language
         this.name = humanoidAttributes.name
-        this.createdAt = humanoidAttributes.createdAt
         this.dimensions = humanoidAttributes.dimensions
         this.healthPoints = humanoidAttributes.healthPoints
     }
