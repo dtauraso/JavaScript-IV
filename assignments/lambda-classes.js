@@ -26,6 +26,17 @@ class Instructor extends Person {
     grade(student, subject) {
         console.log(`${student.name} receives a perfect score on ${subject}`)
     }
+    adjustGrade(student) {
+        
+        let addSubtract = Math.floor(Math.random() * (5 - 2) + 2)
+        console.log(addSubtract)
+        if(addSubtract <= 3) {
+            student.grade += 5
+        } else {
+
+            student.grade -= 5
+        }
+    }
 }
 
 class Student extends Person{
@@ -36,6 +47,7 @@ class Student extends Person{
         this.className = studentAttributes.className
         // array of favorite subjects
         this.favSubjects = studentAttributes.favSubjects
+        this.grade = studentAttributes.grade
     }
     listsSubjects() {
         this.favSubjects.forEach(element => {
@@ -48,6 +60,14 @@ class Student extends Person{
     sprintChallenge(subject) {
         console.log(`${this.name} has begun sprint challenge on ${subject}`)
 
+    }
+    graduate() {
+        if(this.grade >= 70) {
+            console.log(`${this.name} has graduated!`)
+        } else {
+            console.log(`${this.name} has a few more lessons to go`)
+        }
+        
     }
 }
 
@@ -107,7 +127,8 @@ const student1 = new Student({
     location: "middle of nowhere 5",
     previousBackground: "SSU",
     className: "WEB25",
-    favSubjects: ["JS", "HTML", "LESS"]
+    favSubjects: ["JS", "HTML", "LESS"],
+    grade: 69
 })
 
 const student2 = new Student({
@@ -116,7 +137,8 @@ const student2 = new Student({
     location: "middle of nowhere 6",
     previousBackground: "StreetSmartUniversity",
     className: "UI12",
-    favSubjects: ["HTML", "PHP", "SQL"]
+    favSubjects: ["HTML", "PHP", "SQL"],
+    grade: 74
 })
 
 Instructor1.demo("HTML")
@@ -125,6 +147,12 @@ Instructor2.demo("LESS")
 Instructor1.grade(student1, "HTML")
 Instructor2.grade(student2, "LESS")
 
+console.log("start of stretch goals")
+// run multiple times as adding or subtracting is random
+Instructor1.adjustGrade(student1)
+console.log(student1.grade)
+student1.graduate()
+console.log("end of stretch goals")
 student1.listsSubjects()
 student2.PRAssignment("JS")
 student1.sprintChallenge("LESS")
